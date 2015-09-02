@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</head>
+<body>
+<div id="container" ng-controller="myController">
+	<div id="logo">
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="#">Home</a></li> 
+			<li><a href="#" ng-click="menu()">Menu</a></li>
+			<li><a href="#" ng-click="locations()">Location</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<div id="image">
+	</div>
+<div  id="content">
+	
+<!-- 	<ul class="myLinks" ng-repeat="city in cities">
+		<li id='citylist' class="myLinks" city-pizza pizza="city">{{city.cityname}}<div id='pizzalist'></div></li>
+	</ul>
+	 -->
+
+	
+		
+	<p style="text-align: center;font-size: 24px;" id='pContent' ng-show="pContent">Wood Fired Pizza</p>
+	<div  class="myLinks" ng-show='choose' style="background-color: #cccc00; padding: 10px; width: 250px;">{{cityName}}</div>
+	<!-- City Links -->
+	<p></p>
+	<div class="btn btn-default" ng-show="city" ng-click="newyork()">New York</div>
+	<!-- <div class="myLinks" ng-show="city" ng-click="chicago()">Chicago</div> -->
+	<p></p>
+	<div class="btn btn-default" ng-show="city" ng-click="losangeles()">Los Angles</div>
+	
+	<!-- New York Pizza -->
+	<div class="btn btn-info" data-toggle='collapse' data-target='#ny1' ng-show="newyorkShow" ng-click="newyorkCheese()">Cheese</div>
+	<div class="btn btn-info" data-toggle='collapse' data-target='#ny2' ng-show="newyorkShow" ng-click="newyorkVeggie()">Veggie</div>
+	<div class="btn btn-info" data-toggle='collapse' data-target='#ny3' ng-show="newyorkShow" ng-click="newyorkMeat()">Meat</div>
+	
+	<!-- NY Cheese Go back button -->
+	<div class="btn btn-success" ng-show="nyPizzaGoback" ng-click="nyPizzaGobackButton()">Go Back to NY Pizza</div>
+	
+	<!-- NY Cheese Pizza -->
+	<div id='ny1' class="collapse" 
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;' 
+	ng-show="nyCheesePizza">{{newyorkCheesePizza}}</div>
+	<!-- NY Veggi Pizza -->
+	<div id='ny2' class="collapse" 
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;'
+	ng-show="nyVeggiePizza">{{newyorkVeggiePizza}}</div>
+	<!-- NY Meat Pizza -->
+	<div id='ny3' class="collapse" 
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;'
+	ng-show="nyMeatPizza">{{newyorkMeatPizza}}</div>
+	
+
+	
+	<!-- LA Pizzas -->
+	<div class="btn btn-info" data-toggle='collapse' data-target='#la1' ng-show="laShow" ng-click="laCheese()">Cheese</div>
+	<div class="btn btn-info" data-toggle='collapse' data-target='#la2' ng-show="laShow" ng-click="laVeggie()">Veggie</div>
+	<div class="btn btn-info" data-toggle='collapse' data-target='#la3' ng-show="laShow" ng-click="laMeat()">Meat</div>
+
+	<!-- LA Cheese Go back button -->
+	<div class="btn btn-success" ng-show="laPizzaGoback" ng-click="laPizzaGobackButton()">Go Back to LA Pizza</div>
+	
+	<!-- LA Cheese Pizza -->
+	<div class="collapse" 
+	id='la1'
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;'
+	ng-show="laCheesePizza">{{laCheesePizza}}</div>
+	<!-- LA Veggi Pizza -->
+	<div class="collapse" 
+	id="la2"
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;'
+	ng-show="laVeggiePizza">{{laVeggiePizza}}</div>
+	<!-- LA Meat Pizza -->
+	<div class="collapse" 
+	id="la3"
+	style='display: block;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	list-style: none;
+	font-size: 18px; 
+	font-family: sans-serif;'
+	ng-show="laMeatPizza">{{laMeatPizza}}</div>
+	
+
+	<!-- goto city list -->
+	<div class="btn btn-success" ng-show="gotoCity" ng-click="gotoCityList()">Go Back to City List</div>
+</div>
+</div>
+
+</body>
+</html>
+	<!-- <!-- Chicago Pizza
+	<div class="myLinks" ng-show="chicagoShow" ng-click="chicagoCheese()">Cheese</div>
+	<div class="myLinks" ng-show="chicagoShow" ng-click="chicagoVeggie()">Veggie</div>
+	<div class="myLinks" ng-show="chicagoShow" ng-click="chicagoMeat()">Meat</div> --> -->
